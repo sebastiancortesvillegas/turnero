@@ -49,6 +49,7 @@
                 Conexion con = new Conexion();
                 con.Conectar();
                 con.ingresarCLiente(id, nombre, producto, ciudad);
+                response.sendRedirect("RegistroClientes.jsp");
                 con.cierraConexion();
             }
            

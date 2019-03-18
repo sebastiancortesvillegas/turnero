@@ -50,7 +50,7 @@
                 <td><%=rs.getString("nombre")%></td>
                 <td><%=rs.getString("producto")%></td>
                 <td><%=rs.getString("ciudad")%></td>
-                <td> <a href="editarCliente.jsp?id=<%=rs.getInt("id")%>&ac=r">Editar</a>  <button><a href="#">Eliminar</a></button> </td>
+                <td> <a href="editarCliente.jsp?id=<%=rs.getInt("id")%>&accion=EDITAR">Editar</a>  <button><a href="editarCliente.jsp?id=<%=rs.getInt("id")%>&accion=ELIMINAR">Eliminar</a></button> </td>
 
             </tr>
             <%} con1.cierraConexion(); %>

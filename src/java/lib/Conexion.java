@@ -96,4 +96,19 @@ public class Conexion {
         }
        return pstm;
     }
+    
+    public PreparedStatement eliminarCliente(int id){
+        PreparedStatement pstm = null;
+         try {
+             pstm = con.prepareStatement("delete from clientes where"
+                    + " id= "+id);
+            
+           
+          pstm.executeUpdate();
+ 
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+       return pstm;
+    }
 }
