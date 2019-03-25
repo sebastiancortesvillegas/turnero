@@ -63,9 +63,11 @@ public class Conexion {
         
         return rs;
     }
-    public void ingresarCLiente(int id,String nombre,String producto, String ciudad) throws SQLException{
+ 
+          
+    public void ingresarCLiente(int cc,String nombre,String apellido, String email,String cel,String pais,String departamento, String ciudad, String direccion,String id, String estado, String notificar_e, String notificar_s) throws SQLException{
         
-        ps=con.prepareStatement("insert into clientes (id,nombre,producto,ciudad ) values("+id+",'"+nombre+"','"+producto+"','"+ciudad+"')");
+        ps=con.prepareStatement("insert into clientes (Cc,Nombre,Apellido,Email,Cel,Pais,Departamento,Ciudad,Direccion,Id,Estado,Notificar_email,Notificar_sms ) values("+cc+",'"+nombre+"','"+apellido+"','"+email+"',"+cel +", '"+pais+"', '"+departamento+"', '"+ciudad+"', '"+direccion+"', "+id+", '"+estado+"', '"+notificar_e+"', '"+notificar_s+"'  )");
         ps.executeUpdate();
         
     }
@@ -78,15 +80,26 @@ public class Conexion {
     }
 }
     
-    public PreparedStatement actualizarCliente(int id,String nom,String produ,String ciudad){
+    public PreparedStatement actualizarCliente (int cc,String nombre,String  apellido,String  email, String cel,String  pais,String  departamento,String  ciudad,String  direccion,String  id,String  estado,String  notificar_email,String  notificar_sms){
         PreparedStatement pstm = null;
          try {
-             pstm = con.prepareStatement("update clientes "
-                    + "set id= "+id+" ,  "
-                    + "nombre= '"+nom+"' , "
-                    + "producto= '"+produ+"' , "
-                    + "ciudad= '"+ciudad+"' "
-                    + "where id= " + id );
+             pstm = con.prepareStatement("update clientes set "
+                   
+                    + "Nombre= '"+nombre+"' , "
+                    + "Apellido= '"+apellido+"' , "
+                    + "Email= '"+email+"', "
+                    + "Cel= '"+cel+"', "
+                    + "Pais= '"+pais+"', "
+                    + "Departamento= '"+departamento+"', "
+                    + "Ciudad= '"+ciudad+"', "
+                    + "Direccion= '"+direccion+"', "
+                    + "Id= '"+id+"', "
+                    + "Estado= '"+estado+"', "
+                    + "Notificar_email= '"+notificar_email+"', "
+                    + "Notificar_sms= '"+notificar_sms+"' "
+                     
+                     
+                    + "where Cc= " + cc );
             
            
           pstm.executeUpdate();
@@ -97,11 +110,11 @@ public class Conexion {
        return pstm;
     }
     
-    public PreparedStatement eliminarCliente(int id){
+    public PreparedStatement eliminarCliente(int cc){
         PreparedStatement pstm = null;
          try {
              pstm = con.prepareStatement("delete from clientes where"
-                    + " id= "+id);
+                    + " Cc= "+cc);
             
            
           pstm.executeUpdate();
